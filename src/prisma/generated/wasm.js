@@ -122,6 +122,24 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   name: 'name',
+  account_type: 'account_type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserRoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserRolePermissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  actions: 'actions',
+  roleId: 'roleId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -136,9 +154,30 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.AccountType = exports.$Enums.AccountType = {
+  ADMIN: 'ADMIN',
+  USER: 'USER'
+};
+
+exports.PermissionName = exports.$Enums.PermissionName = {
+  USER: 'USER'
+};
+
+exports.PermissionAction = exports.$Enums.PermissionAction = {
+  CREATE: 'CREATE',
+  READ: 'READ',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  UserRole: 'UserRole',
+  UserRolePermission: 'UserRolePermission'
 };
 
 /**

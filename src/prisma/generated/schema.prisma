@@ -9,11 +9,55 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum AccountType {
+  ADMIN
+  USER
+}
+
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String      @id @default(uuid())
+  email        String      @unique
+  password     String
+  name         String
+  account_type AccountType @default(USER)
+  roles        UserRole[]  @relation("UserRoles")
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+// ----------------------------------------------------------------------
+
+model UserRole {
+  id          String               @id @default(uuid())
+  name        String               @unique
+  description String?
+  permissions UserRolePermission[]
+  users       User[]               @relation("UserRoles")
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+}
+
+// ----------------------------------------------------------------------
+
+enum PermissionName {
+  USER
+}
+
+enum PermissionAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+}
+
+model UserRolePermission {
+  id        String             @id @default(uuid())
+  name      PermissionName
+  actions   PermissionAction[] @default([])
+  roleId    String
+  role      UserRole           @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  @@unique([roleId, name])
 }
