@@ -1,11 +1,18 @@
 import { Global, Module } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { ConfigModule } from '@nestjs/config';
+import jwtConfig from 'src/common/config/jwt.config';
+import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Global()
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      load: [jwtConfig],
+    }),
+    PrismaModule,
+  ],
   controllers: [],
-  providers: [PrismaService],
-  exports: [PrismaService],
+  providers: [],
+  exports: [PrismaModule, ConfigModule],
 })
 export class GlobalModule {}

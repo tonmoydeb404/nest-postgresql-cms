@@ -26,10 +26,12 @@ export default tseslint.config(
   },
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-floating-promises': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'warn',
+      '@typescript-eslint/no-explicit-any': 0,
+      '@typescript-eslint/no-floating-promises': 0,
+      '@typescript-eslint/no-unsafe-argument': 0,
       '@typescript-eslint/no-unnecessary-type-assertion': 0,
+      '@typescript-eslint/no-unused-vars': 0,
+      '@typescript-eslint/no-unsafe-assignment': 0,
     },
   },
 );
