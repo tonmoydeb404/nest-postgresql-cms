@@ -8,7 +8,7 @@ export class UsersService {
   constructor(private userRepository: UserRepository) {}
 
   async create(dto: CreateUserDto) {
-    const entity = await this.userRepository.create({
+    const entity = await this.userRepository.createWithHashPassword({
       data: dto,
     });
 

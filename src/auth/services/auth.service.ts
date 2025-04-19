@@ -46,7 +46,9 @@ export class AuthService {
       throw new BadRequestException('User already exists');
     }
 
-    const user = await this.userRepository.create({ data: body });
+    const user = await this.userRepository.createWithHashPassword({
+      data: body,
+    });
 
     const accessToken = this.generateToken({
       email: user.email,
