@@ -33,6 +33,7 @@ export class AuthService {
     const accessToken = this.generateToken({
       email: user.email,
       name: user.name,
+      id: user.id,
     });
 
     return { accessToken, user };
@@ -50,6 +51,23 @@ export class AuthService {
     const accessToken = this.generateToken({
       email: user.email,
       name: user.name,
+      id: user.id,
+    });
+
+    return { accessToken, user };
+  }
+
+  async getRefresh(email: string) {
+    const user = await this.userRepository.findOneByEmail(email);
+
+    if (!user) {
+      throw new BadRequestException('User already exists');
+    }
+
+    const accessToken = this.generateToken({
+      email: user.email,
+      name: user.name,
+      id: user.id,
     });
 
     return { accessToken, user };
