@@ -1,16 +1,113 @@
+model BlogArticle {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  title         String
+  slug          String         @unique
+  description   String
+  content       String
+  stage         ContentStage   @default(DRAFT)
+  categoryId    String
+  category      BlogCategory   @relation(fields: [categoryId], references: [id])
+  comments      BlogComment[]
+  BlogReaction  BlogReaction[]
+  commentsCount Int            @default(0)
+  reactionCount Int            @default(0)
+}
+
+// ----------------------------------------------------------------------
+
+model BlogCategory {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  title       String
+  slug        String        @unique
+  description String
+  BlogArticle BlogArticle[]
+}
+
+// ----------------------------------------------------------------------
+
+model BlogComment {
+  id        String      @id @default(uuid())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  content   String
+  articleId String
+  article   BlogArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------------------------
+
+enum ReactionType {
+  LIKE
+  DISLIKE
+}
+
+model BlogReaction {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  articleId String
+  article   BlogArticle  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      ReactionType
+}
+
+enum ContentStage {
+  PUBLISHED
+  DRAFT
+}
+
+model CustomerCompany {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  name      String
+  stage     ContentStage @default(DRAFT)
+}
+
+// ----------------------------------------------------------------------
+
+model CustomerReview {
+  id             String       @id @default(uuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  authorName     String
+  authorPosition String
+  authorCompany  String
+  content        String
+  stage          ContentStage @default(DRAFT)
+}
+
 model Employee {
-  id        String   @id @default(uuid())
+  id        String       @id @default(uuid())
   firstName String
   lastName  String
   position  String
-  slug      String   @unique
+  slug      String       @unique
   dob       DateTime
-  userId    String?  @unique
-  user      User?    @relation(fields: [userId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  userId    String?      @unique
+  user      User?        @relation(fields: [userId], references: [id])
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  stage     ContentStage @default(DRAFT)
 
   @@index([userId])
+}
+
+model Project {
+  id          String       @id @default(uuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  title       String
+  description String
+  content     String
+  stage       ContentStage @default(DRAFT)
 }
 
 generator client {
@@ -24,21 +121,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Service {
+  id          String       @id @default(uuid())
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  title       String
+  description String
+  content     String
+  stage       ContentStage @default(DRAFT)
+}
+
 enum AccessType {
   ADMIN
   USER
 }
 
 model User {
-  id          String     @id @default(uuid())
-  email       String     @unique
-  password    String
-  name        String
-  access_type AccessType @default(USER)
-  roles       UserRole[] @relation("UserRoles")
-  employee    Employee?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  id         String         @id @default(uuid())
+  email      String         @unique
+  password   String
+  name       String
+  accessType AccessType     @default(USER)
+  roles      UserRole[]     @relation("UserRoles")
+  employee   Employee?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  comments   BlogComment[]
+  reactions  BlogReaction[]
 }
 
 // ----------------------------------------------------------------------
@@ -65,6 +174,8 @@ enum PermissionAction {
   READ
   UPDATE
   DELETE
+  PUBLISH
+  UNPUBLISH
 }
 
 model UserRolePermission {

@@ -4,17 +4,17 @@ enum AccessType {
 }
 
 model User {
-  id          String         @id @default(uuid())
-  email       String         @unique
-  password    String
-  name        String
-  access_type AccessType     @default(USER)
-  roles       UserRole[]     @relation("UserRoles")
-  employee    Employee?
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
-  comments    BlogComment[]
-  reactions   BlogReaction[]
+  id         String         @id @default(uuid())
+  email      String         @unique
+  password   String
+  name       String
+  accessType AccessType     @default(USER)
+  roles      UserRole[]     @relation("UserRoles")
+  employee   Employee?
+  createdAt  DateTime       @default(now())
+  updatedAt  DateTime       @updatedAt
+  comments   BlogComment[]
+  reactions  BlogReaction[]
 }
 
 // ----------------------------------------------------------------------

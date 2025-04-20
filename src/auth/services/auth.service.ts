@@ -22,7 +22,7 @@ export class AuthService {
       email: user.email,
       name: user.name,
       id: user.id,
-      access_type: user.access_type,
+      accessType: user.accessType,
     };
     return this.jwtService.sign(payload);
   }

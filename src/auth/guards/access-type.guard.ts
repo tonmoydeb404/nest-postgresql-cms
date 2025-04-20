@@ -32,7 +32,7 @@ export class AccessTypeGuard implements CanActivate {
       throw new UnauthorizedException('User account not found in request');
     }
 
-    if (!accessTypes.includes(request.user.access_type)) {
+    if (!accessTypes.includes(request.user.accessType)) {
       throw new ForbiddenException(
         'Any of this [' + accessTypes.join(', ') + '] Access required',
       );

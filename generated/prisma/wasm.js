@@ -117,6 +117,66 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.BlogArticleScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  content: 'content',
+  stage: 'stage',
+  categoryId: 'categoryId',
+  commentsCount: 'commentsCount',
+  reactionCount: 'reactionCount'
+};
+
+exports.Prisma.BlogCategoryScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  slug: 'slug',
+  description: 'description'
+};
+
+exports.Prisma.BlogCommentScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  content: 'content',
+  articleId: 'articleId',
+  userId: 'userId'
+};
+
+exports.Prisma.BlogReactionScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  articleId: 'articleId',
+  userId: 'userId',
+  type: 'type'
+};
+
+exports.Prisma.CustomerCompanyScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  stage: 'stage'
+};
+
+exports.Prisma.CustomerReviewScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  authorName: 'authorName',
+  authorPosition: 'authorPosition',
+  authorCompany: 'authorCompany',
+  content: 'content',
+  stage: 'stage'
+};
+
 exports.Prisma.EmployeeScalarFieldEnum = {
   id: 'id',
   firstName: 'firstName',
@@ -126,7 +186,28 @@ exports.Prisma.EmployeeScalarFieldEnum = {
   dob: 'dob',
   userId: 'userId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  stage: 'stage'
+};
+
+exports.Prisma.ProjectScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  description: 'description',
+  content: 'content',
+  stage: 'stage'
+};
+
+exports.Prisma.ServiceScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  title: 'title',
+  description: 'description',
+  content: 'content',
+  stage: 'stage'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
@@ -134,7 +215,7 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   name: 'name',
-  access_type: 'access_type',
+  accessType: 'accessType',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -170,6 +251,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.ContentStage = exports.$Enums.ContentStage = {
+  PUBLISHED: 'PUBLISHED',
+  DRAFT: 'DRAFT'
+};
+
+exports.ReactionType = exports.$Enums.ReactionType = {
+  LIKE: 'LIKE',
+  DISLIKE: 'DISLIKE'
+};
+
 exports.AccessType = exports.$Enums.AccessType = {
   ADMIN: 'ADMIN',
   USER: 'USER'
@@ -184,11 +275,21 @@ exports.PermissionAction = exports.$Enums.PermissionAction = {
   CREATE: 'CREATE',
   READ: 'READ',
   UPDATE: 'UPDATE',
-  DELETE: 'DELETE'
+  DELETE: 'DELETE',
+  PUBLISH: 'PUBLISH',
+  UNPUBLISH: 'UNPUBLISH'
 };
 
 exports.Prisma.ModelName = {
+  BlogArticle: 'BlogArticle',
+  BlogCategory: 'BlogCategory',
+  BlogComment: 'BlogComment',
+  BlogReaction: 'BlogReaction',
+  CustomerCompany: 'CustomerCompany',
+  CustomerReview: 'CustomerReview',
   Employee: 'Employee',
+  Project: 'Project',
+  Service: 'Service',
   User: 'User',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission'

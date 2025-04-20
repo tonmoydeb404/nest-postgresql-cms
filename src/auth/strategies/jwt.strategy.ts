@@ -39,7 +39,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       email: entity.email,
       name: entity.name,
       id: entity.id,
-      access_type: entity.access_type,
+      accessType: entity.accessType,
     };
   }
 }
