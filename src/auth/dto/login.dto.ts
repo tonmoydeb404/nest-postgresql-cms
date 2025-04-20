@@ -3,14 +3,14 @@ import { IsEmail, IsString, MinLength } from 'class-validator';
 
 export class LoginBodyDto {
   @ApiProperty({
-    example: 'user@example.com',
+    example: 'john.doe@example.com',
     description: 'User email address',
   })
   @IsEmail({}, { message: 'Invalid email format' })
   email: string;
 
   @ApiProperty({
-    example: 'strongpassword',
+    example: '12345678',
     description: 'User password (min 6 chars)',
   })
   @IsString()

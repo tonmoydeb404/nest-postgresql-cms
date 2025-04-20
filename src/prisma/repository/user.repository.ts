@@ -23,12 +23,12 @@ export class UserRepository {
   async findOneByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: { email },
-      omit: { password: false },
+      omit: { password: true },
     });
   }
 
   async findOneByEmailPassword(email: string, password: string) {
-    const entity = await this.findOneByEmail(email);
+    const entity = await this.model().findUnique({ where: { email } });
 
     if (!entity) return null;
 

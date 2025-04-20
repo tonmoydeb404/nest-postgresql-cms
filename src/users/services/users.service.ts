@@ -10,17 +10,14 @@ export class UsersService {
   async create(dto: CreateUserDto) {
     const entity = await this.userRepository.createWithHashPassword({
       data: dto,
+      omit: { password: true },
     });
 
-    const { password: _, ...user } = entity;
-
-    return user;
+    return entity;
   }
 
   async findAll() {
-    return this.userRepository
-      .model()
-      .findMany({ select: { password: false } });
+    return this.userRepository.model().findMany({ omit: { password: true } });
   }
 
   async findOne(id: string) {
