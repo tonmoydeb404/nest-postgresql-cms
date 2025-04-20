@@ -4,15 +4,17 @@ enum AccessType {
 }
 
 model User {
-  id          String     @id @default(uuid())
-  email       String     @unique
+  id          String         @id @default(uuid())
+  email       String         @unique
   password    String
   name        String
-  access_type AccessType @default(USER)
-  roles       UserRole[] @relation("UserRoles")
+  access_type AccessType     @default(USER)
+  roles       UserRole[]     @relation("UserRoles")
   employee    Employee?
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  comments    BlogComment[]
+  reactions   BlogReaction[]
 }
 
 // ----------------------------------------------------------------------
@@ -39,6 +41,8 @@ enum PermissionAction {
   READ
   UPDATE
   DELETE
+  PUBLISH
+  UNPUBLISH
 }
 
 model UserRolePermission {

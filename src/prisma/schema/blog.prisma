@@ -1,0 +1,59 @@
+model BlogArticle {
+  id            String         @id @default(uuid())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  title         String
+  slug          String         @unique
+  description   String
+  content       String
+  stage         ContentStage   @default(DRAFT)
+  categoryId    String
+  category      BlogCategory   @relation(fields: [categoryId], references: [id])
+  comments      BlogComment[]
+  BlogReaction  BlogReaction[]
+  commentsCount Int            @default(0)
+  reactionCount Int            @default(0)
+}
+
+// ----------------------------------------------------------------------
+
+model BlogCategory {
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  title       String
+  slug        String        @unique
+  description String
+  BlogArticle BlogArticle[]
+}
+
+// ----------------------------------------------------------------------
+
+model BlogComment {
+  id        String      @id @default(uuid())
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  content   String
+  articleId String
+  article   BlogArticle @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------------------------
+
+enum ReactionType {
+  LIKE
+  DISLIKE
+}
+
+model BlogReaction {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  articleId String
+  article   BlogArticle  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      ReactionType
+}

@@ -1,0 +1,4 @@
+enum ContentStage {
+  PUBLISHED
+  DRAFT
+}

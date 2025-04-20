@@ -1,0 +1,20 @@
+model CustomerCompany {
+  id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  name      String
+  stage     ContentStage @default(DRAFT)
+}
+
+// ----------------------------------------------------------------------
+
+model CustomerReview {
+  id             String       @id @default(uuid())
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  authorName     String
+  authorPosition String
+  authorCompany  String
+  content        String
+  stage          ContentStage @default(DRAFT)
+}
