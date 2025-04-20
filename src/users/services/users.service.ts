@@ -23,7 +23,7 @@ export class UsersService {
       .findMany({ select: { password: false } });
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     const user = await this.userRepository.model().findUnique({
       where: { id },
       omit: { password: true },
@@ -33,7 +33,7 @@ export class UsersService {
     return user;
   }
 
-  async update(id: number, dto: UpdateUserDto) {
+  async update(id: string, dto: UpdateUserDto) {
     await this.findOne(id);
 
     return this.userRepository.model().update({
