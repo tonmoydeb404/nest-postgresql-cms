@@ -4,13 +4,14 @@ import { AuthModule } from 'src/auth/auth.module';
 import { AccessTypeGuard } from 'src/auth/guards/access-type.guard';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { PermissionGuard } from 'src/auth/guards/permission.guard';
+import { EmployeesModule } from 'src/employees/employees.module';
 import { UsersModule } from 'src/users/users.module';
 import { AppController } from './controllers/app.controller';
 import { GlobalModule } from './global.module';
 import { AppService } from './services/app.service';
 
 @Module({
-  imports: [GlobalModule, UsersModule, AuthModule],
+  imports: [GlobalModule, AuthModule, UsersModule, EmployeesModule],
   controllers: [AppController],
   providers: [
     AppService,

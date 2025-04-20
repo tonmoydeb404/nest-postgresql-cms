@@ -117,6 +117,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.EmployeeScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  position: 'position',
+  slug: 'slug',
+  dob: 'dob',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
@@ -164,7 +176,8 @@ exports.AccessType = exports.$Enums.AccessType = {
 };
 
 exports.PermissionName = exports.$Enums.PermissionName = {
-  USER: 'USER'
+  USER: 'USER',
+  EMPLOYEE: 'EMPLOYEE'
 };
 
 exports.PermissionAction = exports.$Enums.PermissionAction = {
@@ -175,6 +188,7 @@ exports.PermissionAction = exports.$Enums.PermissionAction = {
 };
 
 exports.Prisma.ModelName = {
+  Employee: 'Employee',
   User: 'User',
   UserRole: 'UserRole',
   UserRolePermission: 'UserRolePermission'

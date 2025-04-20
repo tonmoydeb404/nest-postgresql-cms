@@ -10,6 +10,7 @@ model User {
   name        String
   access_type AccessType @default(USER)
   roles       UserRole[] @relation("UserRoles")
+  employee    Employee?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
@@ -30,6 +31,7 @@ model UserRole {
 
 enum PermissionName {
   USER
+  EMPLOYEE
 }
 
 enum PermissionAction {

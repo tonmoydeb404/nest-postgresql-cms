@@ -1,0 +1,14 @@
+model Employee {
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  position  String
+  slug      String   @unique
+  dob       DateTime
+  userId    String?  @unique
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}

@@ -1,3 +1,18 @@
+model Employee {
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  position  String
+  slug      String   @unique
+  dob       DateTime
+  userId    String?  @unique
+  user      User?    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
 generator client {
   provider        = "prisma-client-js"
   output          = "../../../generated/prisma"
@@ -21,6 +36,7 @@ model User {
   name        String
   access_type AccessType @default(USER)
   roles       UserRole[] @relation("UserRoles")
+  employee    Employee?
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
@@ -41,6 +57,7 @@ model UserRole {
 
 enum PermissionName {
   USER
+  EMPLOYEE
 }
 
 enum PermissionAction {
