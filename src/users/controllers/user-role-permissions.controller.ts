@@ -8,10 +8,12 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { AdminAccess } from 'src/auth/decorators/access-type.decorator';
 import { CreateUserRolePermissionBodyDto } from '../dto/create-user-role-permission.dto';
 import { UpdateUserRolePermissionBodyDto } from '../dto/update-user-role-permission.dto';
 import { UserRolePermissionsService } from '../services/user-role-permissions.service';
 
+@AdminAccess()
 @ApiTags('User Role Permissions')
 @Controller('/user-role-permissions')
 export class UserRolePermissionsController {

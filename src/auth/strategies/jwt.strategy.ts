@@ -35,6 +35,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       throw new ForbiddenException('Failed to validate authentication details');
     }
 
-    return { email: entity.email, name: entity.name, id: entity.id };
+    return {
+      email: entity.email,
+      name: entity.name,
+      id: entity.id,
+      access_type: entity.access_type,
+    };
   }
 }

@@ -30,9 +30,7 @@ export class PermissionGuard implements CanActivate {
       return true;
     }
 
-    const request = context
-      .switchToHttp()
-      .getRequest<Request & { user?: { id: string } }>();
+    const request = context.switchToHttp().getRequest<Request>();
 
     if (!request.user) {
       throw new UnauthorizedException('User account not found in request');

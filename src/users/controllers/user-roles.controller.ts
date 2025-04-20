@@ -8,10 +8,12 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { AdminAccess } from 'src/auth/decorators/access-type.decorator';
 import { CreateUserRoleBodyDto } from '../dto/create-user-role.dto';
 import { UpdateUserRoleBodyDto } from '../dto/update-user-role.dto';
 import { UserRolesService } from '../services/user-roles.service';
 
+@AdminAccess()
 @ApiTags('User Roles')
 @Controller('/user-roles')
 export class UserRolesController {

@@ -4,6 +4,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { User } from 'generated/prisma';
 import { UserRepository } from 'src/prisma/repository/user.repository';
 import { IAuthJWTPayload } from '../auth.types';
 import { LoginBodyDto } from '../dto/login.dto';
@@ -16,7 +17,13 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  private generateToken(payload: IAuthJWTPayload) {
+  private generateToken(user: Omit<User, 'password'>) {
+    const payload: IAuthJWTPayload = {
+      email: user.email,
+      name: user.name,
+      id: user.id,
+      access_type: user.access_type,
+    };
     return this.jwtService.sign(payload);
   }
 
@@ -30,11 +37,7 @@ export class AuthService {
       throw new UnauthorizedException('Email or password did not matched');
     }
 
-    const accessToken = this.generateToken({
-      email: user.email,
-      name: user.name,
-      id: user.id,
-    });
+    const accessToken = this.generateToken(user);
 
     return { accessToken, user };
   }
@@ -50,11 +53,7 @@ export class AuthService {
       data: body,
     });
 
-    const accessToken = this.generateToken({
-      email: user.email,
-      name: user.name,
-      id: user.id,
-    });
+    const accessToken = this.generateToken(user);
 
     return { accessToken, user };
   }
@@ -66,11 +65,7 @@ export class AuthService {
       throw new BadRequestException('User already exists');
     }
 
-    const accessToken = this.generateToken({
-      email: user.email,
-      name: user.name,
-      id: user.id,
-    });
+    const accessToken = this.generateToken(user);
 
     return { accessToken, user };
   }

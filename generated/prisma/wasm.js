@@ -122,7 +122,7 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   name: 'name',
-  account_type: 'account_type',
+  access_type: 'access_type',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -158,7 +158,7 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.AccountType = exports.$Enums.AccountType = {
+exports.AccessType = exports.$Enums.AccessType = {
   ADMIN: 'ADMIN',
   USER: 'USER'
 };

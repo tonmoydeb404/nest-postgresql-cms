@@ -1,17 +1,17 @@
-enum AccountType {
+enum AccessType {
   ADMIN
   USER
 }
 
 model User {
-  id           String      @id @default(uuid())
-  email        String      @unique
-  password     String
-  name         String
-  account_type AccountType @default(USER)
-  roles        UserRole[]  @relation("UserRoles")
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @updatedAt
+  id          String     @id @default(uuid())
+  email       String     @unique
+  password    String
+  name        String
+  access_type AccessType @default(USER)
+  roles       UserRole[] @relation("UserRoles")
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
 // ----------------------------------------------------------------------
