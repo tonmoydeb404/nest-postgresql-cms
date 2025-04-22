@@ -1,5 +1,7 @@
 model Employee {
   id        String       @id @default(uuid())
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
   firstName String
   lastName  String
   position  String
@@ -7,9 +9,8 @@ model Employee {
   dob       DateTime
   userId    String?      @unique
   user      User?        @relation(fields: [userId], references: [id])
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
   stage     ContentStage @default(DRAFT)
+  joinedAt  DateTime
 
   @@index([userId])
 }

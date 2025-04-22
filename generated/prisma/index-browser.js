@@ -179,15 +179,16 @@ exports.Prisma.CustomerReviewScalarFieldEnum = {
 
 exports.Prisma.EmployeeScalarFieldEnum = {
   id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   firstName: 'firstName',
   lastName: 'lastName',
   position: 'position',
   slug: 'slug',
   dob: 'dob',
   userId: 'userId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  stage: 'stage'
+  stage: 'stage',
+  joinedAt: 'joinedAt'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {

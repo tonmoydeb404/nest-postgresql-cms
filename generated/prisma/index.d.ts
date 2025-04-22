@@ -8612,82 +8612,88 @@ export namespace Prisma {
 
   export type EmployeeMinAggregateOutputType = {
     id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     firstName: string | null
     lastName: string | null
     position: string | null
     slug: string | null
     dob: Date | null
     userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     stage: $Enums.ContentStage | null
+    joinedAt: Date | null
   }
 
   export type EmployeeMaxAggregateOutputType = {
     id: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
     firstName: string | null
     lastName: string | null
     position: string | null
     slug: string | null
     dob: Date | null
     userId: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
     stage: $Enums.ContentStage | null
+    joinedAt: Date | null
   }
 
   export type EmployeeCountAggregateOutputType = {
     id: number
+    createdAt: number
+    updatedAt: number
     firstName: number
     lastName: number
     position: number
     slug: number
     dob: number
     userId: number
-    createdAt: number
-    updatedAt: number
     stage: number
+    joinedAt: number
     _all: number
   }
 
 
   export type EmployeeMinAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     firstName?: true
     lastName?: true
     position?: true
     slug?: true
     dob?: true
     userId?: true
-    createdAt?: true
-    updatedAt?: true
     stage?: true
+    joinedAt?: true
   }
 
   export type EmployeeMaxAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     firstName?: true
     lastName?: true
     position?: true
     slug?: true
     dob?: true
     userId?: true
-    createdAt?: true
-    updatedAt?: true
     stage?: true
+    joinedAt?: true
   }
 
   export type EmployeeCountAggregateInputType = {
     id?: true
+    createdAt?: true
+    updatedAt?: true
     firstName?: true
     lastName?: true
     position?: true
     slug?: true
     dob?: true
     userId?: true
-    createdAt?: true
-    updatedAt?: true
     stage?: true
+    joinedAt?: true
     _all?: true
   }
 
@@ -8765,15 +8771,16 @@ export namespace Prisma {
 
   export type EmployeeGroupByOutputType = {
     id: string
+    createdAt: Date
+    updatedAt: Date
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date
     userId: string | null
-    createdAt: Date
-    updatedAt: Date
     stage: $Enums.ContentStage
+    joinedAt: Date
     _count: EmployeeCountAggregateOutputType | null
     _min: EmployeeMinAggregateOutputType | null
     _max: EmployeeMaxAggregateOutputType | null
@@ -8795,60 +8802,64 @@ export namespace Prisma {
 
   export type EmployeeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     firstName?: boolean
     lastName?: boolean
     position?: boolean
     slug?: boolean
     dob?: boolean
     userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     stage?: boolean
+    joinedAt?: boolean
     user?: boolean | Employee$userArgs<ExtArgs>
   }, ExtArgs["result"]["employee"]>
 
   export type EmployeeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     firstName?: boolean
     lastName?: boolean
     position?: boolean
     slug?: boolean
     dob?: boolean
     userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     stage?: boolean
+    joinedAt?: boolean
     user?: boolean | Employee$userArgs<ExtArgs>
   }, ExtArgs["result"]["employee"]>
 
   export type EmployeeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     firstName?: boolean
     lastName?: boolean
     position?: boolean
     slug?: boolean
     dob?: boolean
     userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     stage?: boolean
+    joinedAt?: boolean
     user?: boolean | Employee$userArgs<ExtArgs>
   }, ExtArgs["result"]["employee"]>
 
   export type EmployeeSelectScalar = {
     id?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     firstName?: boolean
     lastName?: boolean
     position?: boolean
     slug?: boolean
     dob?: boolean
     userId?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
     stage?: boolean
+    joinedAt?: boolean
   }
 
-  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "firstName" | "lastName" | "position" | "slug" | "dob" | "userId" | "createdAt" | "updatedAt" | "stage", ExtArgs["result"]["employee"]>
+  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "firstName" | "lastName" | "position" | "slug" | "dob" | "userId" | "stage" | "joinedAt", ExtArgs["result"]["employee"]>
   export type EmployeeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | Employee$userArgs<ExtArgs>
   }
@@ -8866,15 +8877,16 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      createdAt: Date
+      updatedAt: Date
       firstName: string
       lastName: string
       position: string
       slug: string
       dob: Date
       userId: string | null
-      createdAt: Date
-      updatedAt: Date
       stage: $Enums.ContentStage
+      joinedAt: Date
     }, ExtArgs["result"]["employee"]>
     composites: {}
   }
@@ -9300,15 +9312,16 @@ export namespace Prisma {
    */
   interface EmployeeFieldRefs {
     readonly id: FieldRef<"Employee", 'String'>
+    readonly createdAt: FieldRef<"Employee", 'DateTime'>
+    readonly updatedAt: FieldRef<"Employee", 'DateTime'>
     readonly firstName: FieldRef<"Employee", 'String'>
     readonly lastName: FieldRef<"Employee", 'String'>
     readonly position: FieldRef<"Employee", 'String'>
     readonly slug: FieldRef<"Employee", 'String'>
     readonly dob: FieldRef<"Employee", 'DateTime'>
     readonly userId: FieldRef<"Employee", 'String'>
-    readonly createdAt: FieldRef<"Employee", 'DateTime'>
-    readonly updatedAt: FieldRef<"Employee", 'DateTime'>
     readonly stage: FieldRef<"Employee", 'ContentStage'>
+    readonly joinedAt: FieldRef<"Employee", 'DateTime'>
   }
     
 
@@ -15218,15 +15231,16 @@ export namespace Prisma {
 
   export const EmployeeScalarFieldEnum: {
     id: 'id',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
     firstName: 'firstName',
     lastName: 'lastName',
     position: 'position',
     slug: 'slug',
     dob: 'dob',
     userId: 'userId',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    stage: 'stage'
+    stage: 'stage',
+    joinedAt: 'joinedAt'
   };
 
   export type EmployeeScalarFieldEnum = (typeof EmployeeScalarFieldEnum)[keyof typeof EmployeeScalarFieldEnum]
@@ -15855,29 +15869,31 @@ export namespace Prisma {
     OR?: EmployeeWhereInput[]
     NOT?: EmployeeWhereInput | EmployeeWhereInput[]
     id?: StringFilter<"Employee"> | string
+    createdAt?: DateTimeFilter<"Employee"> | Date | string
+    updatedAt?: DateTimeFilter<"Employee"> | Date | string
     firstName?: StringFilter<"Employee"> | string
     lastName?: StringFilter<"Employee"> | string
     position?: StringFilter<"Employee"> | string
     slug?: StringFilter<"Employee"> | string
     dob?: DateTimeFilter<"Employee"> | Date | string
     userId?: StringNullableFilter<"Employee"> | string | null
-    createdAt?: DateTimeFilter<"Employee"> | Date | string
-    updatedAt?: DateTimeFilter<"Employee"> | Date | string
     stage?: EnumContentStageFilter<"Employee"> | $Enums.ContentStage
+    joinedAt?: DateTimeFilter<"Employee"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type EmployeeOrderByWithRelationInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     position?: SortOrder
     slug?: SortOrder
     dob?: SortOrder
     userId?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     stage?: SortOrder
+    joinedAt?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -15888,27 +15904,29 @@ export namespace Prisma {
     AND?: EmployeeWhereInput | EmployeeWhereInput[]
     OR?: EmployeeWhereInput[]
     NOT?: EmployeeWhereInput | EmployeeWhereInput[]
+    createdAt?: DateTimeFilter<"Employee"> | Date | string
+    updatedAt?: DateTimeFilter<"Employee"> | Date | string
     firstName?: StringFilter<"Employee"> | string
     lastName?: StringFilter<"Employee"> | string
     position?: StringFilter<"Employee"> | string
     dob?: DateTimeFilter<"Employee"> | Date | string
-    createdAt?: DateTimeFilter<"Employee"> | Date | string
-    updatedAt?: DateTimeFilter<"Employee"> | Date | string
     stage?: EnumContentStageFilter<"Employee"> | $Enums.ContentStage
+    joinedAt?: DateTimeFilter<"Employee"> | Date | string
     user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "slug" | "userId">
 
   export type EmployeeOrderByWithAggregationInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     position?: SortOrder
     slug?: SortOrder
     dob?: SortOrder
     userId?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     stage?: SortOrder
+    joinedAt?: SortOrder
     _count?: EmployeeCountOrderByAggregateInput
     _max?: EmployeeMaxOrderByAggregateInput
     _min?: EmployeeMinOrderByAggregateInput
@@ -15919,15 +15937,16 @@ export namespace Prisma {
     OR?: EmployeeScalarWhereWithAggregatesInput[]
     NOT?: EmployeeScalarWhereWithAggregatesInput | EmployeeScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Employee"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
     firstName?: StringWithAggregatesFilter<"Employee"> | string
     lastName?: StringWithAggregatesFilter<"Employee"> | string
     position?: StringWithAggregatesFilter<"Employee"> | string
     slug?: StringWithAggregatesFilter<"Employee"> | string
     dob?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
     userId?: StringNullableWithAggregatesFilter<"Employee"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
     stage?: EnumContentStageWithAggregatesFilter<"Employee"> | $Enums.ContentStage
+    joinedAt?: DateTimeWithAggregatesFilter<"Employee"> | Date | string
   }
 
   export type ProjectWhereInput = {
@@ -16676,92 +16695,99 @@ export namespace Prisma {
 
   export type EmployeeCreateInput = {
     id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     stage?: $Enums.ContentStage
+    joinedAt: Date | string
     user?: UserCreateNestedOneWithoutEmployeeInput
   }
 
   export type EmployeeUncheckedCreateInput = {
     id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date | string
     userId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     stage?: $Enums.ContentStage
+    joinedAt: Date | string
   }
 
   export type EmployeeUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneWithoutEmployeeNestedInput
   }
 
   export type EmployeeUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeCreateManyInput = {
     id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date | string
     userId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
     stage?: $Enums.ContentStage
+    joinedAt: Date | string
   }
 
   export type EmployeeUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProjectCreateInput = {
@@ -17497,41 +17523,44 @@ export namespace Prisma {
 
   export type EmployeeCountOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     position?: SortOrder
     slug?: SortOrder
     dob?: SortOrder
     userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     stage?: SortOrder
+    joinedAt?: SortOrder
   }
 
   export type EmployeeMaxOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     position?: SortOrder
     slug?: SortOrder
     dob?: SortOrder
     userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     stage?: SortOrder
+    joinedAt?: SortOrder
   }
 
   export type EmployeeMinOrderByAggregateInput = {
     id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     firstName?: SortOrder
     lastName?: SortOrder
     position?: SortOrder
     slug?: SortOrder
     dob?: SortOrder
     userId?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     stage?: SortOrder
+    joinedAt?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -19101,26 +19130,28 @@ export namespace Prisma {
 
   export type EmployeeCreateWithoutUserInput = {
     id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     stage?: $Enums.ContentStage
+    joinedAt: Date | string
   }
 
   export type EmployeeUncheckedCreateWithoutUserInput = {
     id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     firstName: string
     lastName: string
     position: string
     slug: string
     dob: Date | string
-    createdAt?: Date | string
-    updatedAt?: Date | string
     stage?: $Enums.ContentStage
+    joinedAt: Date | string
   }
 
   export type EmployeeCreateOrConnectWithoutUserInput = {
@@ -19220,26 +19251,28 @@ export namespace Prisma {
 
   export type EmployeeUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type EmployeeUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     position?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     dob?: DateTimeFieldUpdateOperationsInput | Date | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
+    joinedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BlogCommentUpsertWithWhereUniqueWithoutUserInput = {
