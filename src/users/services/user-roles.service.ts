@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { removeUndefined } from 'src/common/utils/object';
-import { UserRoleRepository } from 'src/prisma/repository/user-role.repository';
+import { UserRoleRepository } from 'src/prisma/repository/user/role.repository';
 import { CreateUserRoleBodyDto } from '../dto/create-user-role.dto';
 import { UpdateUserRoleBodyDto } from '../dto/update-user-role.dto';
 

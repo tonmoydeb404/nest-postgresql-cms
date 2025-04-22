@@ -9,7 +9,7 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { UserRolePermission } from 'generated/prisma';
-import { UserRepository } from 'src/prisma/repository/user.repository';
+import { UserRepository } from 'src/prisma/repository/user/index.repository';
 import { PERMISSIONS_KEY } from '../decorators/permissions.decorator';
 
 @Injectable()

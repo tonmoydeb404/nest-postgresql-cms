@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { removeUndefined } from 'src/common/utils/object';
-import { UserRolePermissionRepository } from 'src/prisma/repository/user-role-permission.repository';
+import { UserRolePermissionRepository } from 'src/prisma/repository/user/role-permission.repository';
 import { CreateUserRolePermissionBodyDto } from '../dto/create-user-role-permission.dto';
 import { UpdateUserRolePermissionBodyDto } from '../dto/update-user-role-permission.dto';
 

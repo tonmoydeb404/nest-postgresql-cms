@@ -3,7 +3,7 @@ import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { Request } from 'express';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserRepository } from 'src/prisma/repository/user.repository';
+import { UserRepository } from 'src/prisma/repository/user/index.repository';
 import { authCookieKey } from '../auth.constant';
 import { IAuthJWTPayload } from '../auth.types';
 

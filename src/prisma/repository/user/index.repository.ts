@@ -2,14 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { Prisma } from 'generated/prisma';
 import { HashService } from 'src/common/services/hash.service';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { UserRoleRepository } from './user-role.repository';
 
 @Injectable()
 export class UserRepository {
   constructor(
     private prisma: PrismaService,
     private hashService: HashService,
-    private userRoleRepository: UserRoleRepository,
   ) {}
 
   model() {

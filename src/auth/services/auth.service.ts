@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'generated/prisma';
-import { UserRepository } from 'src/prisma/repository/user.repository';
+import { UserRepository } from 'src/prisma/repository/user/index.repository';
 import { IAuthJWTPayload } from '../auth.types';
 import { LoginBodyDto } from '../dto/login.dto';
 import { SignUpBodyDto } from '../dto/signup.dto';
