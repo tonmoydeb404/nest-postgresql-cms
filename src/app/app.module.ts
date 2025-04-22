@@ -7,6 +7,7 @@ import { PermissionGuard } from 'src/auth/guards/permission.guard';
 import { CustomersModule } from 'src/customers/customers.module';
 import { EmployeesModule } from 'src/employees/employees.module';
 import { ProjectsModule } from 'src/projects/projects.module';
+import { ServicesModule } from 'src/services/services.module';
 import { UsersModule } from 'src/users/users.module';
 import { AppController } from './controllers/app.controller';
 import { GlobalModule } from './global.module';
@@ -20,6 +21,7 @@ import { AppService } from './services/app.service';
     EmployeesModule,
     CustomersModule,
     ProjectsModule,
+    ServicesModule,
   ],
   controllers: [AppController],
   providers: [
