@@ -146,7 +146,8 @@ exports.Prisma.BlogCommentScalarFieldEnum = {
   updatedAt: 'updatedAt',
   content: 'content',
   articleId: 'articleId',
-  userId: 'userId'
+  userId: 'userId',
+  stage: 'stage'
 };
 
 exports.Prisma.BlogReactionScalarFieldEnum = {

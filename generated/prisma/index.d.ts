@@ -4430,6 +4430,7 @@ export namespace Prisma {
     content: string | null
     articleId: string | null
     userId: string | null
+    stage: $Enums.ContentStage | null
   }
 
   export type BlogCommentMaxAggregateOutputType = {
@@ -4439,6 +4440,7 @@ export namespace Prisma {
     content: string | null
     articleId: string | null
     userId: string | null
+    stage: $Enums.ContentStage | null
   }
 
   export type BlogCommentCountAggregateOutputType = {
@@ -4448,6 +4450,7 @@ export namespace Prisma {
     content: number
     articleId: number
     userId: number
+    stage: number
     _all: number
   }
 
@@ -4459,6 +4462,7 @@ export namespace Prisma {
     content?: true
     articleId?: true
     userId?: true
+    stage?: true
   }
 
   export type BlogCommentMaxAggregateInputType = {
@@ -4468,6 +4472,7 @@ export namespace Prisma {
     content?: true
     articleId?: true
     userId?: true
+    stage?: true
   }
 
   export type BlogCommentCountAggregateInputType = {
@@ -4477,6 +4482,7 @@ export namespace Prisma {
     content?: true
     articleId?: true
     userId?: true
+    stage?: true
     _all?: true
   }
 
@@ -4559,6 +4565,7 @@ export namespace Prisma {
     content: string
     articleId: string
     userId: string
+    stage: $Enums.ContentStage
     _count: BlogCommentCountAggregateOutputType | null
     _min: BlogCommentMinAggregateOutputType | null
     _max: BlogCommentMaxAggregateOutputType | null
@@ -4585,6 +4592,7 @@ export namespace Prisma {
     content?: boolean
     articleId?: boolean
     userId?: boolean
+    stage?: boolean
     article?: boolean | BlogArticleDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blogComment"]>
@@ -4596,6 +4604,7 @@ export namespace Prisma {
     content?: boolean
     articleId?: boolean
     userId?: boolean
+    stage?: boolean
     article?: boolean | BlogArticleDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blogComment"]>
@@ -4607,6 +4616,7 @@ export namespace Prisma {
     content?: boolean
     articleId?: boolean
     userId?: boolean
+    stage?: boolean
     article?: boolean | BlogArticleDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blogComment"]>
@@ -4618,9 +4628,10 @@ export namespace Prisma {
     content?: boolean
     articleId?: boolean
     userId?: boolean
+    stage?: boolean
   }
 
-  export type BlogCommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "content" | "articleId" | "userId", ExtArgs["result"]["blogComment"]>
+  export type BlogCommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "content" | "articleId" | "userId" | "stage", ExtArgs["result"]["blogComment"]>
   export type BlogCommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     article?: boolean | BlogArticleDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -4647,6 +4658,7 @@ export namespace Prisma {
       content: string
       articleId: string
       userId: string
+      stage: $Enums.ContentStage
     }, ExtArgs["result"]["blogComment"]>
     composites: {}
   }
@@ -5078,6 +5090,7 @@ export namespace Prisma {
     readonly content: FieldRef<"BlogComment", 'String'>
     readonly articleId: FieldRef<"BlogComment", 'String'>
     readonly userId: FieldRef<"BlogComment", 'String'>
+    readonly stage: FieldRef<"BlogComment", 'ContentStage'>
   }
     
 
@@ -15186,7 +15199,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     content: 'content',
     articleId: 'articleId',
-    userId: 'userId'
+    userId: 'userId',
+    stage: 'stage'
   };
 
   export type BlogCommentScalarFieldEnum = (typeof BlogCommentScalarFieldEnum)[keyof typeof BlogCommentScalarFieldEnum]
@@ -15629,6 +15643,7 @@ export namespace Prisma {
     content?: StringFilter<"BlogComment"> | string
     articleId?: StringFilter<"BlogComment"> | string
     userId?: StringFilter<"BlogComment"> | string
+    stage?: EnumContentStageFilter<"BlogComment"> | $Enums.ContentStage
     article?: XOR<BlogArticleScalarRelationFilter, BlogArticleWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -15640,6 +15655,7 @@ export namespace Prisma {
     content?: SortOrder
     articleId?: SortOrder
     userId?: SortOrder
+    stage?: SortOrder
     article?: BlogArticleOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
@@ -15654,6 +15670,7 @@ export namespace Prisma {
     content?: StringFilter<"BlogComment"> | string
     articleId?: StringFilter<"BlogComment"> | string
     userId?: StringFilter<"BlogComment"> | string
+    stage?: EnumContentStageFilter<"BlogComment"> | $Enums.ContentStage
     article?: XOR<BlogArticleScalarRelationFilter, BlogArticleWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -15665,6 +15682,7 @@ export namespace Prisma {
     content?: SortOrder
     articleId?: SortOrder
     userId?: SortOrder
+    stage?: SortOrder
     _count?: BlogCommentCountOrderByAggregateInput
     _max?: BlogCommentMaxOrderByAggregateInput
     _min?: BlogCommentMinOrderByAggregateInput
@@ -15680,6 +15698,7 @@ export namespace Prisma {
     content?: StringWithAggregatesFilter<"BlogComment"> | string
     articleId?: StringWithAggregatesFilter<"BlogComment"> | string
     userId?: StringWithAggregatesFilter<"BlogComment"> | string
+    stage?: EnumContentStageWithAggregatesFilter<"BlogComment"> | $Enums.ContentStage
   }
 
   export type BlogReactionWhereInput = {
@@ -15709,6 +15728,7 @@ export namespace Prisma {
 
   export type BlogReactionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId_articleId?: BlogReactionUserId_articleIdCompoundUniqueInput
     AND?: BlogReactionWhereInput | BlogReactionWhereInput[]
     OR?: BlogReactionWhereInput[]
     NOT?: BlogReactionWhereInput | BlogReactionWhereInput[]
@@ -15719,7 +15739,7 @@ export namespace Prisma {
     type?: EnumReactionTypeFilter<"BlogReaction"> | $Enums.ReactionType
     article?: XOR<BlogArticleScalarRelationFilter, BlogArticleWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-  }, "id">
+  }, "id" | "userId_articleId">
 
   export type BlogReactionOrderByWithAggregationInput = {
     id?: SortOrder
@@ -16443,6 +16463,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    stage?: $Enums.ContentStage
     article: BlogArticleCreateNestedOneWithoutCommentsInput
     user: UserCreateNestedOneWithoutCommentsInput
   }
@@ -16454,6 +16475,7 @@ export namespace Prisma {
     content: string
     articleId: string
     userId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogCommentUpdateInput = {
@@ -16461,6 +16483,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
     article?: BlogArticleUpdateOneRequiredWithoutCommentsNestedInput
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
@@ -16472,6 +16495,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     articleId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogCommentCreateManyInput = {
@@ -16481,6 +16505,7 @@ export namespace Prisma {
     content: string
     articleId: string
     userId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogCommentUpdateManyMutationInput = {
@@ -16488,6 +16513,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogCommentUncheckedUpdateManyInput = {
@@ -16497,6 +16523,7 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     articleId?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogReactionCreateInput = {
@@ -17375,6 +17402,7 @@ export namespace Prisma {
     content?: SortOrder
     articleId?: SortOrder
     userId?: SortOrder
+    stage?: SortOrder
   }
 
   export type BlogCommentMaxOrderByAggregateInput = {
@@ -17384,6 +17412,7 @@ export namespace Prisma {
     content?: SortOrder
     articleId?: SortOrder
     userId?: SortOrder
+    stage?: SortOrder
   }
 
   export type BlogCommentMinOrderByAggregateInput = {
@@ -17393,6 +17422,7 @@ export namespace Prisma {
     content?: SortOrder
     articleId?: SortOrder
     userId?: SortOrder
+    stage?: SortOrder
   }
 
   export type EnumReactionTypeFilter<$PrismaModel = never> = {
@@ -17400,6 +17430,11 @@ export namespace Prisma {
     in?: $Enums.ReactionType[] | ListEnumReactionTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.ReactionType[] | ListEnumReactionTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumReactionTypeFilter<$PrismaModel> | $Enums.ReactionType
+  }
+
+  export type BlogReactionUserId_articleIdCompoundUniqueInput = {
+    userId: string
+    articleId: string
   }
 
   export type BlogReactionCountOrderByAggregateInput = {
@@ -18544,6 +18579,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    stage?: $Enums.ContentStage
     user: UserCreateNestedOneWithoutCommentsInput
   }
 
@@ -18553,6 +18589,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     content: string
     userId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogCommentCreateOrConnectWithoutArticleInput = {
@@ -18646,6 +18683,7 @@ export namespace Prisma {
     content?: StringFilter<"BlogComment"> | string
     articleId?: StringFilter<"BlogComment"> | string
     userId?: StringFilter<"BlogComment"> | string
+    stage?: EnumContentStageFilter<"BlogComment"> | $Enums.ContentStage
   }
 
   export type BlogReactionUpsertWithWhereUniqueWithoutArticleInput = {
@@ -19164,6 +19202,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     content: string
+    stage?: $Enums.ContentStage
     article: BlogArticleCreateNestedOneWithoutCommentsInput
   }
 
@@ -19173,6 +19212,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     content: string
     articleId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogCommentCreateOrConnectWithoutUserInput = {
@@ -19479,6 +19519,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     content: string
     userId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogReactionCreateManyArticleInput = {
@@ -19494,6 +19535,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
     user?: UserUpdateOneRequiredWithoutCommentsNestedInput
   }
 
@@ -19503,6 +19545,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogCommentUncheckedUpdateManyWithoutArticleInput = {
@@ -19511,6 +19554,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogReactionUpdateWithoutArticleInput = {
@@ -19599,6 +19643,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     content: string
     articleId: string
+    stage?: $Enums.ContentStage
   }
 
   export type BlogReactionCreateManyUserInput = {
@@ -19640,6 +19685,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
     article?: BlogArticleUpdateOneRequiredWithoutCommentsNestedInput
   }
 
@@ -19649,6 +19695,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
     articleId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogCommentUncheckedUpdateManyWithoutUserInput = {
@@ -19657,6 +19704,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     content?: StringFieldUpdateOperationsInput | string
     articleId?: StringFieldUpdateOperationsInput | string
+    stage?: EnumContentStageFieldUpdateOperationsInput | $Enums.ContentStage
   }
 
   export type BlogReactionUpdateWithoutUserInput = {

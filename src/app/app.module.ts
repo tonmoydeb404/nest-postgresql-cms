@@ -4,6 +4,7 @@ import { AuthModule } from 'src/auth/auth.module';
 import { AccessTypeGuard } from 'src/auth/guards/access-type.guard';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { PermissionGuard } from 'src/auth/guards/permission.guard';
+import { BlogModule } from 'src/blog/blog.module';
 import { CustomersModule } from 'src/customers/customers.module';
 import { EmployeesModule } from 'src/employees/employees.module';
 import { ProjectsModule } from 'src/projects/projects.module';
@@ -22,6 +23,7 @@ import { AppService } from './services/app.service';
     CustomersModule,
     ProjectsModule,
     ServicesModule,
+    BlogModule,
   ],
   controllers: [AppController],
   providers: [
