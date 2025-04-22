@@ -39,4 +39,8 @@ export class CreateEmployeeBodyDto {
   @IsNotEmpty()
   @IsUUID()
   userId: string;
+
+  @ApiProperty({ example: '1990-01-01T00:00:00.000Z' })
+  @IsDateString()
+  joinedAt: Date;
 }

@@ -22,7 +22,7 @@ async function bootstrap() {
   });
 
   // Enable class-validator globally
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
   // Swagger ----------------------------------------------------------------------
   const swagger = new DocumentBuilder()
