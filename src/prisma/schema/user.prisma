@@ -15,6 +15,7 @@ model User {
   updatedAt  DateTime       @updatedAt
   comments   BlogComment[]
   reactions  BlogReaction[]
+  assets     Asset[]
 }
 
 // ----------------------------------------------------------------------

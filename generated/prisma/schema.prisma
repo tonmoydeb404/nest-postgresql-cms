@@ -1,3 +1,16 @@
+model Asset {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  mimetype  String
+  size      String
+  path      String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  meta      Json     @default("{}")
+}
+
 model BlogArticle {
   id            String         @id @default(uuid())
   createdAt     DateTime       @default(now())
@@ -152,6 +165,7 @@ model User {
   updatedAt  DateTime       @updatedAt
   comments   BlogComment[]
   reactions  BlogReaction[]
+  assets     Asset[]
 }
 
 // ----------------------------------------------------------------------

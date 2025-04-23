@@ -117,6 +117,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.AssetScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  name: 'name',
+  mimetype: 'mimetype',
+  size: 'size',
+  path: 'path',
+  authorId: 'authorId',
+  meta: 'meta'
+};
+
 exports.Prisma.BlogArticleScalarFieldEnum = {
   id: 'id',
   createdAt: 'createdAt',
@@ -244,9 +256,19 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 
 exports.Prisma.NullsOrder = {
@@ -283,6 +305,7 @@ exports.PermissionAction = exports.$Enums.PermissionAction = {
 };
 
 exports.Prisma.ModelName = {
+  Asset: 'Asset',
   BlogArticle: 'BlogArticle',
   BlogCategory: 'BlogCategory',
   BlogComment: 'BlogComment',

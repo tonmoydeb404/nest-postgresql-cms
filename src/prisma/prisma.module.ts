@@ -1,6 +1,7 @@
 import { Global, Module } from '@nestjs/common';
 import { HashService } from 'src/common/services/hash.service';
 import { PrismaService } from './prisma.service';
+import { AssetRepository } from './repository/asset.repository';
 import { BlogArticleRepository } from './repository/blog/article.repository';
 import { BlogCategoryRepository } from './repository/blog/category.repository';
 import { BlogCommentRepository } from './repository/blog/comment.repository';
@@ -27,6 +28,7 @@ const repositories = [
   CustomerReviewRepository,
   ProjectRepository,
   ServiceRepository,
+  AssetRepository,
 ];
 
 @Global()
