@@ -2204,8 +2204,18 @@ export namespace Prisma {
 
   export type AggregateAsset = {
     _count: AssetCountAggregateOutputType | null
+    _avg: AssetAvgAggregateOutputType | null
+    _sum: AssetSumAggregateOutputType | null
     _min: AssetMinAggregateOutputType | null
     _max: AssetMaxAggregateOutputType | null
+  }
+
+  export type AssetAvgAggregateOutputType = {
+    size: number | null
+  }
+
+  export type AssetSumAggregateOutputType = {
+    size: number | null
   }
 
   export type AssetMinAggregateOutputType = {
@@ -2214,7 +2224,7 @@ export namespace Prisma {
     updatedAt: Date | null
     name: string | null
     mimetype: string | null
-    size: string | null
+    size: number | null
     path: string | null
     authorId: string | null
   }
@@ -2225,7 +2235,7 @@ export namespace Prisma {
     updatedAt: Date | null
     name: string | null
     mimetype: string | null
-    size: string | null
+    size: number | null
     path: string | null
     authorId: string | null
   }
@@ -2243,6 +2253,14 @@ export namespace Prisma {
     _all: number
   }
 
+
+  export type AssetAvgAggregateInputType = {
+    size?: true
+  }
+
+  export type AssetSumAggregateInputType = {
+    size?: true
+  }
 
   export type AssetMinAggregateInputType = {
     id?: true
@@ -2317,6 +2335,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: AssetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AssetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: AssetMinAggregateInputType
@@ -2347,6 +2377,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: AssetCountAggregateInputType | true
+    _avg?: AssetAvgAggregateInputType
+    _sum?: AssetSumAggregateInputType
     _min?: AssetMinAggregateInputType
     _max?: AssetMaxAggregateInputType
   }
@@ -2357,11 +2389,13 @@ export namespace Prisma {
     updatedAt: Date
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     authorId: string
     meta: JsonValue
     _count: AssetCountAggregateOutputType | null
+    _avg: AssetAvgAggregateOutputType | null
+    _sum: AssetSumAggregateOutputType | null
     _min: AssetMinAggregateOutputType | null
     _max: AssetMaxAggregateOutputType | null
   }
@@ -2453,7 +2487,7 @@ export namespace Prisma {
       updatedAt: Date
       name: string
       mimetype: string
-      size: string
+      size: number
       path: string
       authorId: string
       meta: Prisma.JsonValue
@@ -2886,7 +2920,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Asset", 'DateTime'>
     readonly name: FieldRef<"Asset", 'String'>
     readonly mimetype: FieldRef<"Asset", 'String'>
-    readonly size: FieldRef<"Asset", 'String'>
+    readonly size: FieldRef<"Asset", 'Int'>
     readonly path: FieldRef<"Asset", 'String'>
     readonly authorId: FieldRef<"Asset", 'String'>
     readonly meta: FieldRef<"Asset", 'Json'>
@@ -16645,6 +16679,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -16669,20 +16717,6 @@ export namespace Prisma {
    * Reference to a field of type 'ContentStage[]'
    */
   export type ListEnumContentStageFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContentStage[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -16768,7 +16802,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     name?: StringFilter<"Asset"> | string
     mimetype?: StringFilter<"Asset"> | string
-    size?: StringFilter<"Asset"> | string
+    size?: IntFilter<"Asset"> | number
     path?: StringFilter<"Asset"> | string
     authorId?: StringFilter<"Asset"> | string
     meta?: JsonFilter<"Asset">
@@ -16797,7 +16831,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     name?: StringFilter<"Asset"> | string
     mimetype?: StringFilter<"Asset"> | string
-    size?: StringFilter<"Asset"> | string
+    size?: IntFilter<"Asset"> | number
     path?: StringFilter<"Asset"> | string
     authorId?: StringFilter<"Asset"> | string
     meta?: JsonFilter<"Asset">
@@ -16815,8 +16849,10 @@ export namespace Prisma {
     authorId?: SortOrder
     meta?: SortOrder
     _count?: AssetCountOrderByAggregateInput
+    _avg?: AssetAvgOrderByAggregateInput
     _max?: AssetMaxOrderByAggregateInput
     _min?: AssetMinOrderByAggregateInput
+    _sum?: AssetSumOrderByAggregateInput
   }
 
   export type AssetScalarWhereWithAggregatesInput = {
@@ -16828,7 +16864,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Asset"> | Date | string
     name?: StringWithAggregatesFilter<"Asset"> | string
     mimetype?: StringWithAggregatesFilter<"Asset"> | string
-    size?: StringWithAggregatesFilter<"Asset"> | string
+    size?: IntWithAggregatesFilter<"Asset"> | number
     path?: StringWithAggregatesFilter<"Asset"> | string
     authorId?: StringWithAggregatesFilter<"Asset"> | string
     meta?: JsonWithAggregatesFilter<"Asset">
@@ -17649,7 +17685,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     meta?: JsonNullValueInput | InputJsonValue
     author: UserCreateNestedOneWithoutAssetsInput
@@ -17661,7 +17697,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     authorId: string
     meta?: JsonNullValueInput | InputJsonValue
@@ -17673,7 +17709,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
     author?: UserUpdateOneRequiredWithoutAssetsNestedInput
@@ -17685,7 +17721,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
@@ -17697,7 +17733,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     authorId: string
     meta?: JsonNullValueInput | InputJsonValue
@@ -17709,7 +17745,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -17720,7 +17756,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     authorId?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
@@ -18638,6 +18674,17 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -18679,6 +18726,10 @@ export namespace Prisma {
     meta?: SortOrder
   }
 
+  export type AssetAvgOrderByAggregateInput = {
+    size?: SortOrder
+  }
+
   export type AssetMaxOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
@@ -18699,6 +18750,10 @@ export namespace Prisma {
     size?: SortOrder
     path?: SortOrder
     authorId?: SortOrder
+  }
+
+  export type AssetSumOrderByAggregateInput = {
+    size?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -18732,6 +18787,22 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
   export type JsonWithAggregatesFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
@@ -18764,17 +18835,6 @@ export namespace Prisma {
     in?: $Enums.ContentStage[] | ListEnumContentStageFieldRefInput<$PrismaModel>
     notIn?: $Enums.ContentStage[] | ListEnumContentStageFieldRefInput<$PrismaModel>
     not?: NestedEnumContentStageFilter<$PrismaModel> | $Enums.ContentStage
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type BlogCategoryScalarRelationFilter = {
@@ -18862,22 +18922,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumContentStageFilter<$PrismaModel>
     _max?: NestedEnumContentStageFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type BlogArticleListRelationFilter = {
@@ -19393,6 +19437,14 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateOneRequiredWithoutAssetsNestedInput = {
     create?: XOR<UserCreateWithoutAssetsInput, UserUncheckedCreateWithoutAssetsInput>
     connectOrCreate?: UserCreateOrConnectWithoutAssetsInput
@@ -19437,14 +19489,6 @@ export namespace Prisma {
 
   export type EnumContentStageFieldUpdateOperationsInput = {
     set?: $Enums.ContentStage
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type BlogCategoryUpdateOneRequiredWithoutBlogArticleNestedInput = {
@@ -19965,6 +20009,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -19982,17 +20037,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -20005,6 +20049,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -20045,33 +20116,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumContentStageFilter<$PrismaModel>
     _max?: NestedEnumContentStageFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedEnumReactionTypeFilter<$PrismaModel = never> = {
@@ -20957,7 +21001,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -20968,7 +21012,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -21104,7 +21148,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Asset"> | Date | string
     name?: StringFilter<"Asset"> | string
     mimetype?: StringFilter<"Asset"> | string
-    size?: StringFilter<"Asset"> | string
+    size?: IntFilter<"Asset"> | number
     path?: StringFilter<"Asset"> | string
     authorId?: StringFilter<"Asset"> | string
     meta?: JsonFilter<"Asset">
@@ -21425,7 +21469,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     name: string
     mimetype: string
-    size: string
+    size: number
     path: string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -21513,7 +21557,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -21524,7 +21568,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
   }
@@ -21535,7 +21579,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     mimetype?: StringFieldUpdateOperationsInput | string
-    size?: StringFieldUpdateOperationsInput | string
+    size?: IntFieldUpdateOperationsInput | number
     path?: StringFieldUpdateOperationsInput | string
     meta?: JsonNullValueInput | InputJsonValue
   }

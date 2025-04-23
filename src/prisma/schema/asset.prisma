@@ -4,7 +4,7 @@ model Asset {
   updatedAt DateTime @updatedAt
   name      String
   mimetype  String
-  size      String
+  size      Int
   path      String
   authorId  String
   author    User     @relation(fields: [authorId], references: [id])
