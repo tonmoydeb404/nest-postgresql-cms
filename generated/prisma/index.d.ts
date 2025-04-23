@@ -11313,8 +11313,8 @@ export namespace Prisma {
     id: string
     createdAt: Date
     updatedAt: Date
-    firstName: string
-    lastName: string
+    firstName: string | null
+    lastName: string | null
     avatarId: string | null
     userId: string
     _count: ProfileCountAggregateOutputType | null
@@ -11399,8 +11399,8 @@ export namespace Prisma {
       id: string
       createdAt: Date
       updatedAt: Date
-      firstName: string
-      lastName: string
+      firstName: string | null
+      lastName: string | null
       avatarId: string | null
       userId: string
     }, ExtArgs["result"]["profile"]>
@@ -18714,8 +18714,8 @@ export namespace Prisma {
     id?: StringFilter<"Profile"> | string
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
-    firstName?: StringFilter<"Profile"> | string
-    lastName?: StringFilter<"Profile"> | string
+    firstName?: StringNullableFilter<"Profile"> | string | null
+    lastName?: StringNullableFilter<"Profile"> | string | null
     avatarId?: StringNullableFilter<"Profile"> | string | null
     userId?: StringFilter<"Profile"> | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -18725,8 +18725,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    firstName?: SortOrderInput | SortOrder
+    lastName?: SortOrderInput | SortOrder
     avatarId?: SortOrderInput | SortOrder
     userId?: SortOrder
     user?: UserOrderByWithRelationInput
@@ -18740,8 +18740,8 @@ export namespace Prisma {
     NOT?: ProfileWhereInput | ProfileWhereInput[]
     createdAt?: DateTimeFilter<"Profile"> | Date | string
     updatedAt?: DateTimeFilter<"Profile"> | Date | string
-    firstName?: StringFilter<"Profile"> | string
-    lastName?: StringFilter<"Profile"> | string
+    firstName?: StringNullableFilter<"Profile"> | string | null
+    lastName?: StringNullableFilter<"Profile"> | string | null
     avatarId?: StringNullableFilter<"Profile"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId">
@@ -18750,8 +18750,8 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    firstName?: SortOrder
-    lastName?: SortOrder
+    firstName?: SortOrderInput | SortOrder
+    lastName?: SortOrderInput | SortOrder
     avatarId?: SortOrderInput | SortOrder
     userId?: SortOrder
     _count?: ProfileCountOrderByAggregateInput
@@ -18766,8 +18766,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Profile"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Profile"> | Date | string
-    firstName?: StringWithAggregatesFilter<"Profile"> | string
-    lastName?: StringWithAggregatesFilter<"Profile"> | string
+    firstName?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    lastName?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     avatarId?: StringNullableWithAggregatesFilter<"Profile"> | string | null
     userId?: StringWithAggregatesFilter<"Profile"> | string
   }
@@ -19763,8 +19763,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    firstName: string
-    lastName: string
+    firstName?: string | null
+    lastName?: string | null
     avatarId?: string | null
     user: UserCreateNestedOneWithoutProfileInput
   }
@@ -19773,8 +19773,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    firstName: string
-    lastName: string
+    firstName?: string | null
+    lastName?: string | null
     avatarId?: string | null
     userId: string
   }
@@ -19783,8 +19783,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
@@ -19793,8 +19793,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -19803,8 +19803,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    firstName: string
-    lastName: string
+    firstName?: string | null
+    lastName?: string | null
     avatarId?: string | null
     userId: string
   }
@@ -19813,8 +19813,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -19822,8 +19822,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
     userId?: StringFieldUpdateOperationsInput | string
   }
@@ -22792,8 +22792,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    firstName: string
-    lastName: string
+    firstName?: string | null
+    lastName?: string | null
     avatarId?: string | null
   }
 
@@ -22801,8 +22801,8 @@ export namespace Prisma {
     id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    firstName: string
-    lastName: string
+    firstName?: string | null
+    lastName?: string | null
     avatarId?: string | null
   }
 
@@ -22955,8 +22955,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -22964,8 +22964,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    firstName?: StringFieldUpdateOperationsInput | string
-    lastName?: StringFieldUpdateOperationsInput | string
+    firstName?: NullableStringFieldUpdateOperationsInput | string | null
+    lastName?: NullableStringFieldUpdateOperationsInput | string | null
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

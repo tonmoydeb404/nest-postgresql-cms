@@ -2,8 +2,8 @@ model Profile {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  firstName String
-  lastName  String
+  firstName String?
+  lastName  String?
   avatarId  String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)

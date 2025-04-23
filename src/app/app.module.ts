@@ -8,6 +8,7 @@ import { PermissionGuard } from 'src/auth/guards/permission.guard';
 import { BlogModule } from 'src/blog/blog.module';
 import { CustomersModule } from 'src/customers/customers.module';
 import { EmployeesModule } from 'src/employees/employees.module';
+import { ProfilesModule } from 'src/profiles/profiles.module';
 import { ProjectsModule } from 'src/projects/projects.module';
 import { ServicesModule } from 'src/services/services.module';
 import { UsersModule } from 'src/users/users.module';
@@ -20,6 +21,7 @@ import { AppService } from './services/app.service';
     GlobalModule,
     AuthModule,
     UsersModule,
+    ProfilesModule,
     EmployeesModule,
     CustomersModule,
     ProjectsModule,
