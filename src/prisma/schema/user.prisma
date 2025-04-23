@@ -15,6 +15,7 @@ model User {
   comments   BlogComment[]
   reactions  BlogReaction[]
   assets     Asset[]
+  profile    Profile?
 }
 
 // ----------------------------------------------------------------------

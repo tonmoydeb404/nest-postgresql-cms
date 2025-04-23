@@ -215,7 +215,8 @@ exports.Prisma.ProfileScalarFieldEnum = {
   updatedAt: 'updatedAt',
   firstName: 'firstName',
   lastName: 'lastName',
-  avatarId: 'avatarId'
+  avatarId: 'avatarId',
+  userId: 'userId'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {

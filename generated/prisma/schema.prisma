@@ -129,6 +129,10 @@ model Profile {
   firstName String
   lastName  String
   avatarId  String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
 }
 
 model Project {
@@ -183,6 +187,7 @@ model User {
   comments   BlogComment[]
   reactions  BlogReaction[]
   assets     Asset[]
+  profile    Profile?
 }
 
 // ----------------------------------------------------------------------

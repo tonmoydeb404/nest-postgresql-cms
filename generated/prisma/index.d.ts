@@ -11181,6 +11181,7 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     avatarId: string | null
+    userId: string | null
   }
 
   export type ProfileMaxAggregateOutputType = {
@@ -11190,6 +11191,7 @@ export namespace Prisma {
     firstName: string | null
     lastName: string | null
     avatarId: string | null
+    userId: string | null
   }
 
   export type ProfileCountAggregateOutputType = {
@@ -11199,6 +11201,7 @@ export namespace Prisma {
     firstName: number
     lastName: number
     avatarId: number
+    userId: number
     _all: number
   }
 
@@ -11210,6 +11213,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     avatarId?: true
+    userId?: true
   }
 
   export type ProfileMaxAggregateInputType = {
@@ -11219,6 +11223,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     avatarId?: true
+    userId?: true
   }
 
   export type ProfileCountAggregateInputType = {
@@ -11228,6 +11233,7 @@ export namespace Prisma {
     firstName?: true
     lastName?: true
     avatarId?: true
+    userId?: true
     _all?: true
   }
 
@@ -11310,6 +11316,7 @@ export namespace Prisma {
     firstName: string
     lastName: string
     avatarId: string | null
+    userId: string
     _count: ProfileCountAggregateOutputType | null
     _min: ProfileMinAggregateOutputType | null
     _max: ProfileMaxAggregateOutputType | null
@@ -11336,6 +11343,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     avatarId?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11345,6 +11354,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     avatarId?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11354,6 +11365,8 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     avatarId?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["profile"]>
 
   export type ProfileSelectScalar = {
@@ -11363,13 +11376,25 @@ export namespace Prisma {
     firstName?: boolean
     lastName?: boolean
     avatarId?: boolean
+    userId?: boolean
   }
 
-  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "firstName" | "lastName" | "avatarId", ExtArgs["result"]["profile"]>
+  export type ProfileOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "createdAt" | "updatedAt" | "firstName" | "lastName" | "avatarId" | "userId", ExtArgs["result"]["profile"]>
+  export type ProfileInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ProfileIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $ProfilePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Profile"
-    objects: {}
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       createdAt: Date
@@ -11377,6 +11402,7 @@ export namespace Prisma {
       firstName: string
       lastName: string
       avatarId: string | null
+      userId: string
     }, ExtArgs["result"]["profile"]>
     composites: {}
   }
@@ -11771,6 +11797,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProfileClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11806,6 +11833,7 @@ export namespace Prisma {
     readonly firstName: FieldRef<"Profile", 'String'>
     readonly lastName: FieldRef<"Profile", 'String'>
     readonly avatarId: FieldRef<"Profile", 'String'>
+    readonly userId: FieldRef<"Profile", 'String'>
   }
     
 
@@ -11822,6 +11850,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
     /**
      * Filter, which Profile to fetch.
      */
@@ -11841,6 +11873,10 @@ export namespace Prisma {
      */
     omit?: ProfileOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
      * Filter, which Profile to fetch.
      */
     where: ProfileWhereUniqueInput
@@ -11858,6 +11894,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
     /**
      * Filter, which Profile to fetch.
      */
@@ -11907,6 +11947,10 @@ export namespace Prisma {
      */
     omit?: ProfileOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
      * Filter, which Profile to fetch.
      */
     where?: ProfileWhereInput
@@ -11955,6 +11999,10 @@ export namespace Prisma {
      */
     omit?: ProfileOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
      * Filter, which Profiles to fetch.
      */
     where?: ProfileWhereInput
@@ -11998,6 +12046,10 @@ export namespace Prisma {
      */
     omit?: ProfileOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    /**
      * The data needed to create a Profile.
      */
     data: XOR<ProfileCreateInput, ProfileUncheckedCreateInput>
@@ -12031,6 +12083,10 @@ export namespace Prisma {
      */
     data: ProfileCreateManyInput | ProfileCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -12045,6 +12101,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
     /**
      * The data needed to update a Profile.
      */
@@ -12097,6 +12157,10 @@ export namespace Prisma {
      * Limit how many Profiles to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -12111,6 +12175,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
     /**
      * The filter to search for the Profile to update in case it exists.
      */
@@ -12137,6 +12205,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
     /**
      * Filter which Profile to delete.
      */
@@ -12169,6 +12241,10 @@ export namespace Prisma {
      * Omit specific fields from the Profile
      */
     omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
   }
 
 
@@ -14443,6 +14519,7 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     reactions?: boolean | User$reactionsArgs<ExtArgs>
     assets?: boolean | User$assetsArgs<ExtArgs>
+    profile?: boolean | User$profileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -14480,6 +14557,7 @@ export namespace Prisma {
     comments?: boolean | User$commentsArgs<ExtArgs>
     reactions?: boolean | User$reactionsArgs<ExtArgs>
     assets?: boolean | User$assetsArgs<ExtArgs>
+    profile?: boolean | User$profileArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -14493,6 +14571,7 @@ export namespace Prisma {
       comments: Prisma.$BlogCommentPayload<ExtArgs>[]
       reactions: Prisma.$BlogReactionPayload<ExtArgs>[]
       assets: Prisma.$AssetPayload<ExtArgs>[]
+      profile: Prisma.$ProfilePayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -14900,6 +14979,7 @@ export namespace Prisma {
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reactions<T extends User$reactionsArgs<ExtArgs> = {}>(args?: Subset<T, User$reactionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogReactionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     assets<T extends User$assetsArgs<ExtArgs> = {}>(args?: Subset<T, User$assetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15435,6 +15515,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AssetScalarFieldEnum | AssetScalarFieldEnum[]
+  }
+
+  /**
+   * User.profile
+   */
+  export type User$profileArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Profile
+     */
+    select?: ProfileSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Profile
+     */
+    omit?: ProfileOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProfileInclude<ExtArgs> | null
+    where?: ProfileWhereInput
   }
 
   /**
@@ -17757,7 +17856,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     firstName: 'firstName',
     lastName: 'lastName',
-    avatarId: 'avatarId'
+    avatarId: 'avatarId',
+    userId: 'userId'
   };
 
   export type ProfileScalarFieldEnum = (typeof ProfileScalarFieldEnum)[keyof typeof ProfileScalarFieldEnum]
@@ -18617,6 +18717,8 @@ export namespace Prisma {
     firstName?: StringFilter<"Profile"> | string
     lastName?: StringFilter<"Profile"> | string
     avatarId?: StringNullableFilter<"Profile"> | string | null
+    userId?: StringFilter<"Profile"> | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ProfileOrderByWithRelationInput = {
@@ -18626,10 +18728,13 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     avatarId?: SortOrderInput | SortOrder
+    userId?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type ProfileWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    userId?: string
     AND?: ProfileWhereInput | ProfileWhereInput[]
     OR?: ProfileWhereInput[]
     NOT?: ProfileWhereInput | ProfileWhereInput[]
@@ -18638,7 +18743,8 @@ export namespace Prisma {
     firstName?: StringFilter<"Profile"> | string
     lastName?: StringFilter<"Profile"> | string
     avatarId?: StringNullableFilter<"Profile"> | string | null
-  }, "id">
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId">
 
   export type ProfileOrderByWithAggregationInput = {
     id?: SortOrder
@@ -18647,6 +18753,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     avatarId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     _count?: ProfileCountOrderByAggregateInput
     _max?: ProfileMaxOrderByAggregateInput
     _min?: ProfileMinOrderByAggregateInput
@@ -18662,6 +18769,7 @@ export namespace Prisma {
     firstName?: StringWithAggregatesFilter<"Profile"> | string
     lastName?: StringWithAggregatesFilter<"Profile"> | string
     avatarId?: StringNullableWithAggregatesFilter<"Profile"> | string | null
+    userId?: StringWithAggregatesFilter<"Profile"> | string
   }
 
   export type ProjectWhereInput = {
@@ -18823,6 +18931,7 @@ export namespace Prisma {
     comments?: BlogCommentListRelationFilter
     reactions?: BlogReactionListRelationFilter
     assets?: AssetListRelationFilter
+    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -18837,6 +18946,7 @@ export namespace Prisma {
     comments?: BlogCommentOrderByRelationAggregateInput
     reactions?: BlogReactionOrderByRelationAggregateInput
     assets?: AssetOrderByRelationAggregateInput
+    profile?: ProfileOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -18854,6 +18964,7 @@ export namespace Prisma {
     comments?: BlogCommentListRelationFilter
     reactions?: BlogReactionListRelationFilter
     assets?: AssetListRelationFilter
+    profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -19655,6 +19766,7 @@ export namespace Prisma {
     firstName: string
     lastName: string
     avatarId?: string | null
+    user: UserCreateNestedOneWithoutProfileInput
   }
 
   export type ProfileUncheckedCreateInput = {
@@ -19664,6 +19776,7 @@ export namespace Prisma {
     firstName: string
     lastName: string
     avatarId?: string | null
+    userId: string
   }
 
   export type ProfileUpdateInput = {
@@ -19673,6 +19786,7 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
+    user?: UserUpdateOneRequiredWithoutProfileNestedInput
   }
 
   export type ProfileUncheckedUpdateInput = {
@@ -19682,6 +19796,7 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProfileCreateManyInput = {
@@ -19691,6 +19806,7 @@ export namespace Prisma {
     firstName: string
     lastName: string
     avatarId?: string | null
+    userId: string
   }
 
   export type ProfileUpdateManyMutationInput = {
@@ -19709,6 +19825,7 @@ export namespace Prisma {
     firstName?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     avatarId?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProjectCreateInput = {
@@ -19891,6 +20008,7 @@ export namespace Prisma {
     comments?: BlogCommentCreateNestedManyWithoutUserInput
     reactions?: BlogReactionCreateNestedManyWithoutUserInput
     assets?: AssetCreateNestedManyWithoutAuthorInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -19905,6 +20023,7 @@ export namespace Prisma {
     comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
     assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -19919,6 +20038,7 @@ export namespace Prisma {
     comments?: BlogCommentUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUpdateManyWithoutUserNestedInput
     assets?: AssetUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -19933,6 +20053,7 @@ export namespace Prisma {
     comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
     assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -20648,6 +20769,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     avatarId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ProfileMaxOrderByAggregateInput = {
@@ -20657,6 +20779,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     avatarId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ProfileMinOrderByAggregateInput = {
@@ -20666,6 +20789,7 @@ export namespace Prisma {
     firstName?: SortOrder
     lastName?: SortOrder
     avatarId?: SortOrder
+    userId?: SortOrder
   }
 
   export type ProjectCountOrderByAggregateInput = {
@@ -20762,6 +20886,11 @@ export namespace Prisma {
     every?: AssetWhereInput
     some?: AssetWhereInput
     none?: AssetWhereInput
+  }
+
+  export type ProfileNullableScalarRelationFilter = {
+    is?: ProfileWhereInput | null
+    isNot?: ProfileWhereInput | null
   }
 
   export type UserRoleOrderByRelationAggregateInput = {
@@ -21167,6 +21296,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEmployeeInput, UserUpdateWithoutEmployeeInput>, UserUncheckedUpdateWithoutEmployeeInput>
   }
 
+  export type UserCreateNestedOneWithoutProfileInput = {
+    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutProfileNestedInput = {
+    create?: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    connectOrCreate?: UserCreateOrConnectWithoutProfileInput
+    upsert?: UserUpsertWithoutProfileInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutProfileInput, UserUpdateWithoutProfileInput>, UserUncheckedUpdateWithoutProfileInput>
+  }
+
   export type UserRoleCreateNestedManyWithoutUsersInput = {
     create?: XOR<UserRoleCreateWithoutUsersInput, UserRoleUncheckedCreateWithoutUsersInput> | UserRoleCreateWithoutUsersInput[] | UserRoleUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUsersInput | UserRoleCreateOrConnectWithoutUsersInput[]
@@ -21200,6 +21343,12 @@ export namespace Prisma {
     connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
   }
 
+  export type ProfileCreateNestedOneWithoutUserInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    connect?: ProfileWhereUniqueInput
+  }
+
   export type UserRoleUncheckedCreateNestedManyWithoutUsersInput = {
     create?: XOR<UserRoleCreateWithoutUsersInput, UserRoleUncheckedCreateWithoutUsersInput> | UserRoleCreateWithoutUsersInput[] | UserRoleUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUsersInput | UserRoleCreateOrConnectWithoutUsersInput[]
@@ -21231,6 +21380,12 @@ export namespace Prisma {
     connectOrCreate?: AssetCreateOrConnectWithoutAuthorInput | AssetCreateOrConnectWithoutAuthorInput[]
     createMany?: AssetCreateManyAuthorInputEnvelope
     connect?: AssetWhereUniqueInput | AssetWhereUniqueInput[]
+  }
+
+  export type ProfileUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    connect?: ProfileWhereUniqueInput
   }
 
   export type EnumAccessTypeFieldUpdateOperationsInput = {
@@ -21302,6 +21457,16 @@ export namespace Prisma {
     deleteMany?: AssetScalarWhereInput | AssetScalarWhereInput[]
   }
 
+  export type ProfileUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    upsert?: ProfileUpsertWithoutUserInput
+    disconnect?: ProfileWhereInput | boolean
+    delete?: ProfileWhereInput | boolean
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
   export type UserRoleUncheckedUpdateManyWithoutUsersNestedInput = {
     create?: XOR<UserRoleCreateWithoutUsersInput, UserRoleUncheckedCreateWithoutUsersInput> | UserRoleCreateWithoutUsersInput[] | UserRoleUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: UserRoleCreateOrConnectWithoutUsersInput | UserRoleCreateOrConnectWithoutUsersInput[]
@@ -21365,6 +21530,16 @@ export namespace Prisma {
     update?: AssetUpdateWithWhereUniqueWithoutAuthorInput | AssetUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: AssetUpdateManyWithWhereWithoutAuthorInput | AssetUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: AssetScalarWhereInput | AssetScalarWhereInput[]
+  }
+
+  export type ProfileUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
+    upsert?: ProfileUpsertWithoutUserInput
+    disconnect?: ProfileWhereInput | boolean
+    delete?: ProfileWhereInput | boolean
+    connect?: ProfileWhereUniqueInput
+    update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
   }
 
   export type UserRolePermissionCreateNestedManyWithoutRoleInput = {
@@ -21712,6 +21887,7 @@ export namespace Prisma {
     employee?: EmployeeCreateNestedOneWithoutUserInput
     comments?: BlogCommentCreateNestedManyWithoutUserInput
     reactions?: BlogReactionCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAssetsInput = {
@@ -21725,6 +21901,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedCreateNestedOneWithoutUserInput
     comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAssetsInput = {
@@ -21754,6 +21931,7 @@ export namespace Prisma {
     employee?: EmployeeUpdateOneWithoutUserNestedInput
     comments?: BlogCommentUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAssetsInput = {
@@ -21767,6 +21945,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedUpdateOneWithoutUserNestedInput
     comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type BlogCategoryCreateWithoutBlogArticleInput = {
@@ -22061,6 +22240,7 @@ export namespace Prisma {
     employee?: EmployeeCreateNestedOneWithoutUserInput
     reactions?: BlogReactionCreateNestedManyWithoutUserInput
     assets?: AssetCreateNestedManyWithoutAuthorInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
@@ -22074,6 +22254,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedCreateNestedOneWithoutUserInput
     reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
     assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -22148,6 +22329,7 @@ export namespace Prisma {
     employee?: EmployeeUpdateOneWithoutUserNestedInput
     reactions?: BlogReactionUpdateManyWithoutUserNestedInput
     assets?: AssetUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -22161,6 +22343,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedUpdateOneWithoutUserNestedInput
     reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
     assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type BlogArticleCreateWithoutBlogReactionInput = {
@@ -22213,6 +22396,7 @@ export namespace Prisma {
     employee?: EmployeeCreateNestedOneWithoutUserInput
     comments?: BlogCommentCreateNestedManyWithoutUserInput
     assets?: AssetCreateNestedManyWithoutAuthorInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReactionsInput = {
@@ -22226,6 +22410,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedCreateNestedOneWithoutUserInput
     comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
     assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReactionsInput = {
@@ -22300,6 +22485,7 @@ export namespace Prisma {
     employee?: EmployeeUpdateOneWithoutUserNestedInput
     comments?: BlogCommentUpdateManyWithoutUserNestedInput
     assets?: AssetUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReactionsInput = {
@@ -22313,6 +22499,7 @@ export namespace Prisma {
     employee?: EmployeeUncheckedUpdateOneWithoutUserNestedInput
     comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
     assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateWithoutEmployeeInput = {
@@ -22326,6 +22513,7 @@ export namespace Prisma {
     comments?: BlogCommentCreateNestedManyWithoutUserInput
     reactions?: BlogReactionCreateNestedManyWithoutUserInput
     assets?: AssetCreateNestedManyWithoutAuthorInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEmployeeInput = {
@@ -22339,6 +22527,7 @@ export namespace Prisma {
     comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
     assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEmployeeInput = {
@@ -22368,6 +22557,7 @@ export namespace Prisma {
     comments?: BlogCommentUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUpdateManyWithoutUserNestedInput
     assets?: AssetUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEmployeeInput = {
@@ -22378,6 +22568,79 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     roles?: UserRoleUncheckedUpdateManyWithoutUsersNestedInput
+    comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
+    reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
+    assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutProfileInput = {
+    id?: string
+    email: string
+    password: string
+    accessType?: $Enums.AccessType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    roles?: UserRoleCreateNestedManyWithoutUsersInput
+    employee?: EmployeeCreateNestedOneWithoutUserInput
+    comments?: BlogCommentCreateNestedManyWithoutUserInput
+    reactions?: BlogReactionCreateNestedManyWithoutUserInput
+    assets?: AssetCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserUncheckedCreateWithoutProfileInput = {
+    id?: string
+    email: string
+    password: string
+    accessType?: $Enums.AccessType
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    roles?: UserRoleUncheckedCreateNestedManyWithoutUsersInput
+    employee?: EmployeeUncheckedCreateNestedOneWithoutUserInput
+    comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
+    reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
+    assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+  }
+
+  export type UserCreateOrConnectWithoutProfileInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+  }
+
+  export type UserUpsertWithoutProfileInput = {
+    update: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
+    create: XOR<UserCreateWithoutProfileInput, UserUncheckedCreateWithoutProfileInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutProfileInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutProfileInput, UserUncheckedUpdateWithoutProfileInput>
+  }
+
+  export type UserUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    accessType?: EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    roles?: UserRoleUpdateManyWithoutUsersNestedInput
+    employee?: EmployeeUpdateOneWithoutUserNestedInput
+    comments?: BlogCommentUpdateManyWithoutUserNestedInput
+    reactions?: BlogReactionUpdateManyWithoutUserNestedInput
+    assets?: AssetUpdateManyWithoutAuthorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutProfileInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    accessType?: EnumAccessTypeFieldUpdateOperationsInput | $Enums.AccessType
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    roles?: UserRoleUncheckedUpdateManyWithoutUsersNestedInput
+    employee?: EmployeeUncheckedUpdateOneWithoutUserNestedInput
     comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
     assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
@@ -22525,6 +22788,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProfileCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    firstName: string
+    lastName: string
+    avatarId?: string | null
+  }
+
+  export type ProfileUncheckedCreateWithoutUserInput = {
+    id?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    firstName: string
+    lastName: string
+    avatarId?: string | null
+  }
+
+  export type ProfileCreateOrConnectWithoutUserInput = {
+    where: ProfileWhereUniqueInput
+    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+  }
+
   export type UserRoleUpsertWithWhereUniqueWithoutUsersInput = {
     where: UserRoleWhereUniqueInput
     update: XOR<UserRoleUpdateWithoutUsersInput, UserRoleUncheckedUpdateWithoutUsersInput>
@@ -22654,6 +22940,35 @@ export namespace Prisma {
     meta?: JsonFilter<"Asset">
   }
 
+  export type ProfileUpsertWithoutUserInput = {
+    update: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
+    create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+    where?: ProfileWhereInput
+  }
+
+  export type ProfileUpdateToOneWithWhereWithoutUserInput = {
+    where?: ProfileWhereInput
+    data: XOR<ProfileUpdateWithoutUserInput, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ProfileUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    avatarId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ProfileUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    avatarId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type UserRolePermissionCreateWithoutRoleInput = {
     id?: string
     name: $Enums.PermissionName
@@ -22691,6 +23006,7 @@ export namespace Prisma {
     comments?: BlogCommentCreateNestedManyWithoutUserInput
     reactions?: BlogReactionCreateNestedManyWithoutUserInput
     assets?: AssetCreateNestedManyWithoutAuthorInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRolesInput = {
@@ -22704,6 +23020,7 @@ export namespace Prisma {
     comments?: BlogCommentUncheckedCreateNestedManyWithoutUserInput
     reactions?: BlogReactionUncheckedCreateNestedManyWithoutUserInput
     assets?: AssetUncheckedCreateNestedManyWithoutAuthorInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRolesInput = {
@@ -23132,6 +23449,7 @@ export namespace Prisma {
     comments?: BlogCommentUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUpdateManyWithoutUserNestedInput
     assets?: AssetUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRolesInput = {
@@ -23145,6 +23463,7 @@ export namespace Prisma {
     comments?: BlogCommentUncheckedUpdateManyWithoutUserNestedInput
     reactions?: BlogReactionUncheckedUpdateManyWithoutUserNestedInput
     assets?: AssetUncheckedUpdateManyWithoutAuthorNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRolesInput = {
