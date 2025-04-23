@@ -6,4 +6,6 @@ model Project {
   description String
   content     String
   stage       ContentStage @default(DRAFT)
+  thumbnailId String?
+  coverId     String?
 }

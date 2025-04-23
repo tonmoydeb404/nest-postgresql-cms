@@ -4,6 +4,7 @@ model CustomerCompany {
   updatedAt DateTime     @updatedAt
   name      String
   stage     ContentStage @default(DRAFT)
+  logoId    String?
 }
 
 // ----------------------------------------------------------------------
@@ -17,4 +18,5 @@ model CustomerReview {
   authorCompany  String
   content        String
   stage          ContentStage @default(DRAFT)
+  avatarId       String?
 }

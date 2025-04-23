@@ -140,7 +140,9 @@ exports.Prisma.BlogArticleScalarFieldEnum = {
   stage: 'stage',
   categoryId: 'categoryId',
   commentsCount: 'commentsCount',
-  reactionCount: 'reactionCount'
+  reactionCount: 'reactionCount',
+  thumbnailId: 'thumbnailId',
+  coverId: 'coverId'
 };
 
 exports.Prisma.BlogCategoryScalarFieldEnum = {
@@ -176,7 +178,8 @@ exports.Prisma.CustomerCompanyScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   name: 'name',
-  stage: 'stage'
+  stage: 'stage',
+  logoId: 'logoId'
 };
 
 exports.Prisma.CustomerReviewScalarFieldEnum = {
@@ -187,7 +190,8 @@ exports.Prisma.CustomerReviewScalarFieldEnum = {
   authorPosition: 'authorPosition',
   authorCompany: 'authorCompany',
   content: 'content',
-  stage: 'stage'
+  stage: 'stage',
+  avatarId: 'avatarId'
 };
 
 exports.Prisma.EmployeeScalarFieldEnum = {
@@ -201,7 +205,17 @@ exports.Prisma.EmployeeScalarFieldEnum = {
   dob: 'dob',
   userId: 'userId',
   stage: 'stage',
-  joinedAt: 'joinedAt'
+  joinedAt: 'joinedAt',
+  avatarId: 'avatarId'
+};
+
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  avatarId: 'avatarId'
 };
 
 exports.Prisma.ProjectScalarFieldEnum = {
@@ -211,7 +225,9 @@ exports.Prisma.ProjectScalarFieldEnum = {
   title: 'title',
   description: 'description',
   content: 'content',
-  stage: 'stage'
+  stage: 'stage',
+  thumbnailId: 'thumbnailId',
+  coverId: 'coverId'
 };
 
 exports.Prisma.ServiceScalarFieldEnum = {
@@ -221,14 +237,15 @@ exports.Prisma.ServiceScalarFieldEnum = {
   title: 'title',
   description: 'description',
   content: 'content',
-  stage: 'stage'
+  stage: 'stage',
+  iconId: 'iconId',
+  coverId: 'coverId'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
-  name: 'name',
   accessType: 'accessType',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -313,6 +330,7 @@ exports.Prisma.ModelName = {
   CustomerCompany: 'CustomerCompany',
   CustomerReview: 'CustomerReview',
   Employee: 'Employee',
+  Profile: 'Profile',
   Project: 'Project',
   Service: 'Service',
   User: 'User',

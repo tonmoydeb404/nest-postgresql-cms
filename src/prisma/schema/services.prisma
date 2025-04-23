@@ -6,4 +6,6 @@ model Service {
   description String
   content     String
   stage       ContentStage @default(DRAFT)
+  iconId      String?
+  coverId     String?
 }

@@ -9,6 +9,7 @@ import { BlogReactionRepository } from './repository/blog/reaction.repository';
 import { CustomerCompanyRepository } from './repository/customer/company.repository';
 import { CustomerReviewRepository } from './repository/customer/review.repository';
 import { EmployeeRepository } from './repository/employee.repository';
+import { ProfileRepository } from './repository/profile.repository';
 import { ProjectRepository } from './repository/project.repository';
 import { ServiceRepository } from './repository/service.repository';
 import { UserRepository } from './repository/user/index.repository';
@@ -29,6 +30,7 @@ const repositories = [
   ProjectRepository,
   ServiceRepository,
   AssetRepository,
+  ProfileRepository,
 ];
 
 @Global()

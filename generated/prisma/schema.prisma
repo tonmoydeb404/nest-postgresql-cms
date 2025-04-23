@@ -26,6 +26,8 @@ model BlogArticle {
   BlogReaction  BlogReaction[]
   commentsCount Int            @default(0)
   reactionCount Int            @default(0)
+  thumbnailId   String?
+  coverId       String?
 }
 
 // ----------------------------------------------------------------------
@@ -85,6 +87,7 @@ model CustomerCompany {
   updatedAt DateTime     @updatedAt
   name      String
   stage     ContentStage @default(DRAFT)
+  logoId    String?
 }
 
 // ----------------------------------------------------------------------
@@ -98,6 +101,7 @@ model CustomerReview {
   authorCompany  String
   content        String
   stage          ContentStage @default(DRAFT)
+  avatarId       String?
 }
 
 model Employee {
@@ -113,8 +117,18 @@ model Employee {
   user      User?        @relation(fields: [userId], references: [id])
   stage     ContentStage @default(DRAFT)
   joinedAt  DateTime
+  avatarId  String?
 
   @@index([userId])
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String
+  lastName  String
+  avatarId  String?
 }
 
 model Project {
@@ -125,6 +139,8 @@ model Project {
   description String
   content     String
   stage       ContentStage @default(DRAFT)
+  thumbnailId String?
+  coverId     String?
 }
 
 generator client {
@@ -146,6 +162,8 @@ model Service {
   description String
   content     String
   stage       ContentStage @default(DRAFT)
+  iconId      String?
+  coverId     String?
 }
 
 enum AccessType {
@@ -157,7 +175,6 @@ model User {
   id         String         @id @default(uuid())
   email      String         @unique
   password   String
-  name       String
   accessType AccessType     @default(USER)
   roles      UserRole[]     @relation("UserRoles")
   employee   Employee?

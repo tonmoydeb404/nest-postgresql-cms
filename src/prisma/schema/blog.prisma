@@ -13,6 +13,8 @@ model BlogArticle {
   BlogReaction  BlogReaction[]
   commentsCount Int            @default(0)
   reactionCount Int            @default(0)
+  thumbnailId   String?
+  coverId       String?
 }
 
 // ----------------------------------------------------------------------
