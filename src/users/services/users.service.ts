@@ -1,6 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { UserRepository } from 'src/prisma/repository/user/index.repository';
 import { CreateUserDto } from '../dto/create-user.dto';
+import { UpdateUserPasswordBodyDto } from '../dto/update-user-password.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 
 @Injectable()
@@ -36,6 +41,22 @@ export class UsersService {
     return this.userRepository.model().update({
       where: { id },
       data: dto,
+    });
+  }
+
+  async updatePassword(email: string, dto: UpdateUserPasswordBodyDto) {
+    const user = await this.userRepository.findOneByEmailPassword(
+      email,
+      dto.currentPassword,
+    );
+
+    if (!user) {
+      throw new BadRequestException('Password did not matched');
+    }
+
+    return this.userRepository.updateWithHashPassword({
+      where: { id: user.id },
+      data: { password: dto.newPassword },
     });
   }
 }

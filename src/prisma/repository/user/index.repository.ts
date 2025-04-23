@@ -20,6 +20,14 @@ export class UserRepository {
     return this.prisma.user.create({ data, ...others });
   }
 
+  async updateWithHashPassword({ data, ...others }: Prisma.UserUpdateArgs) {
+    if (typeof data.password === 'string') {
+      data.password = await this.hashService.hash(data.password);
+    }
+
+    return this.prisma.user.update({ data, ...others });
+  }
+
   async findOneByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: { email },
