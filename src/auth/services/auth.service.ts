@@ -20,7 +20,6 @@ export class AuthService {
   private generateToken(user: Omit<User, 'password'>) {
     const payload: IAuthJWTPayload = {
       email: user.email,
-      name: user.name,
       id: user.id,
       accessType: user.accessType,
     };
