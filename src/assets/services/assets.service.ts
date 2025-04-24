@@ -69,4 +69,24 @@ export class AssetsService {
       .deleteMany({ where: { id: { in: ids } } });
     return response.count;
   }
+
+  async updateById(id: string, file: Express.Multer.File) {
+    const entity = await this.findOneById(id);
+
+    const response = await this.imgbbService.uploadFile(file);
+
+    return this.repository.model().update({
+      where: { id: entity.id },
+      data: {
+        name: response.data.title,
+        path: response.data.url,
+        mimetype: response.data.image.mime,
+        size: parseInt(response.data.size),
+        meta: {
+          width: parseInt(response.data.width),
+          height: parseInt(response.data.height),
+        },
+      },
+    });
+  }
 }
